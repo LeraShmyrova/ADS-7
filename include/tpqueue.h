@@ -13,15 +13,17 @@ class TPQueue {
   ITEM *n;
   ITEM *P;
   };
+ 
  public:
   T pop();
   void push(const T& value);
-  TPQueue():head(nullptr), tail(nullptr) {}
+  TPQueue():hea(nullptr), tai(nullptr) {}
   ~TPQueue() {
-  while (head) {
+  while (hea) {
   pop();
   }
   }
+ 
  private:
   TPQueue::ITEM *c(const T& value) {
   ITEM *it = new ITEM;
@@ -32,11 +34,11 @@ class TPQueue {
   }
   ITEM *tai;
   ITEM *hea;
-  };
+ };
 template<typename T>
   void TPQueue<T>::push(const T& value) {
   ITEM *t = hea;
-  ITEM *it = create(value);
+  ITEM *it = c(value);
   while (t && t -> value.prior >= value.prior)
   t = t -> n;
   if (!t && hea) {
@@ -59,7 +61,7 @@ template<typename T>
 template<typename T>
 T TPQueue<T>::pop() {
 if (hea) {
-ITEM *temp = hea->n;
+ITEM *t = hea->n;
 if (t)
 t->p = nullptr;
 T value = hea->value;
