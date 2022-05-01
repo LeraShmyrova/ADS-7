@@ -11,7 +11,7 @@ class TPQueue {
   struct ITEM {
   T value;
   ITEM *n;
-  ITEM *P;
+  ITEM *p;
   };
 
  public:
