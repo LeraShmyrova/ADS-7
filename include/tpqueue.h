@@ -13,7 +13,7 @@ class TPQueue {
   ITEM *n;
   ITEM *P;
   };
- 
+
  public:
   T pop();
   void push(const T& value);
@@ -23,7 +23,7 @@ class TPQueue {
   pop();
   }
   }
- 
+
  private:
   TPQueue::ITEM *c(const T& value) {
   ITEM *it = new ITEM;
@@ -34,7 +34,7 @@ class TPQueue {
   }
   ITEM *tai;
   ITEM *hea;
- };
+};
 template<typename T>
   void TPQueue<T>::push(const T& value) {
   ITEM *t = hea;
