@@ -2,13 +2,16 @@
 #ifndef INCLUDE_TPQUEUE_H_
 #define INCLUDE_TPQUEUE_H_
 
+#include <iostream>
+#include <string>
+
 template<typename T>
 class TPQueue {
  private:
-  sruct ITEM {
+  struct ITEM {
   T value;
   ITEM *n;
-  ITEM *P;  
+  ITEM *P;
   };
  public:
   T pop();
@@ -18,6 +21,7 @@ class TPQueue {
   while (head) {
   pop();
   }
+  }
  private:
   TPQueue::ITEM *c(const T& value) {
   ITEM *it = new ITEM;
@@ -26,27 +30,27 @@ class TPQueue {
   it -> p = nullptr;
   return it;
   }
-  ITEM *t;
-  ITEM *h;  
+  ITEM *tai;
+  ITEM *hea;
   };
 template<typename T>
   void TPQueue<T>::push(const T& value) {
-  ITEM *t = head;
+  ITEM *t = hea;
   ITEM *it = create(value);
   while (t && t -> value.prior >= value.prior)
   t = t -> n;
-  if (!temp && head) {  /в конец/
-  tail->next = item;
-  tail->next->prev = tail;
-  tail = item;
-  } else if (!temp && !head) { /в пустой/
-  head = tail = item;
-  } else if (!temp->prev) { /в начало/
+  if (!t && hea) {
+  tai->n = it;
+  tai->n->p = tai;
+  tai = it;
+  } else if (!t && !hea) {
+  hea = tai = it;
+  } else if (!t->p) {
   t->p = it;
   it->n = t;
-  head = it;
+  hea = it;
   } else {
-  temp->prev->next = item;
+  t->p->n = it;
   it->p = t->p;
   it->n = t;
   t->p = it;
@@ -54,19 +58,19 @@ template<typename T>
 }
 template<typename T>
 T TPQueue<T>::pop() {
-if (head) {
-ITEMtemp = head->n;
+if (hea) {
+ITEM *temp = hea->n;
 if (t)
 t->p = nullptr;
-T value = head->value;
-delete head;
-if (!head) t = nullptr;
-head = t;
+T value = hea->value;
+delete hea;
+if (!hea) tai = nullptr;
+hea = t;
 return value;
 } else {
 throw std::string("Empty!");
 }
-}  
+}
 
 struct SYM {
   char ch;
